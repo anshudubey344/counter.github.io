@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <style>
+        html, body {
+    font-family: sans-serif;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background-image: url('/pexels-photo-924824.jpeg');
+    background-size: 100%;
+    
+}
+.box {
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+}
+.box .allTime {
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    font-size: 3rem;
+    font-weight: 600;
+    justify-content: center;
+    color: white;	
+}
+.box .allTime .wp {
+    align-items: center;
+    display: inline-flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    padding: 0 .375em;
+}
+.box .allTime .wp span {
+    font-size: 1rem;
+}
+.para{
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 5px;
+
+}
+
+.button {
+  background-color: rgb(250, 74, 103);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+    </style>
+</head>
+<body >
+   <p class="para"><span style="color:white;">We are</span><span style="color: #f57aadc9;"> Coming</span> <span style="color: white;">soon</span> <br><span style="color: white;">on</span>  <br> <span style="color: rgba(243, 9, 48, 0.452);">06 Aprils</span></p>  
+    <div class="box">
+        
+		
+		<div class="allTime">
+			<div class="wp days"></div>
+			<div class="wp hrs"></div>
+			<div class="wp min"></div>
+			<div class="wp sec"></div>
+            
+		</div>
+        <a href="#" style="margin-top: 30px;" class="button"></a>
+        
+	</div>
+    
+
+</body>
+<script>
+    let countDownBox	= document.querySelector(".allTime");
+		let daysBox			= document.querySelector(".days");
+		let hrsBox			= document.querySelector(".hrs");
+		let minBox			= document.querySelector(".min");
+		let secBox			= document.querySelector(".sec");
+		let countDownDate	= new Date("April 6, 2022 00:01:00").getTime();
+
+		// COUNT DOWN FUNCTION
+		let x = setInterval(function() {
+
+			// GET DATE
+			let now = new Date().getTime();
+
+			// TIME BETWEEN NOW AND DATE
+			let distance = countDownDate - now;
+
+			// CALCULATION TIME
+			let days 	= Math.floor(distance / (1000 * 60 * 60 * 24));
+			let hours 	= Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			let minutes	= Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			let seconds	= Math.floor((distance % (1000 * 60)) / 1000);
+
+			daysBox.innerHTML	= days + "<span>Days</span>";
+			hrsBox.innerHTML 	= hours + "<span>Hour</span>";
+			minBox.innerHTML 	= minutes + "<span>Minutes</span>";
+			secBox.innerHTML 	= seconds + "<span>Second</span>";
+
+			// IF FINISH
+			if (distance < 0) {
+				clearInterval(x);
+				countDownBox.innerHTML = "¡FELICIDADES!";
+			}
+		}, 1000);
+</script>
+</html>
